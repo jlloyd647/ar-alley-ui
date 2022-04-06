@@ -1,20 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, SafeAreaView, Button, Modal} from 'react-native';
+import LocationModal from './components/modals/LocationModal';
+import InfoModal from './components/modals/InfoModal'
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function App() {
+export default () => {
+  const [locModalVisible, setLocModalVisible] = useState(false)
+  const [infoModalVisible, setInfoModalVisible] = useState(false)
+  const [locID, setLocID] = useState(0)
+
+  const setLocVis = (comp) => {
+    setLocModalVisible(!locModalVisible)
+  }
+  const setInfoVis = () => {
+    setInfoModalVisible(!infoModalVisible)
+  }
+  const setInfo = (id) => {
+    setLocID(id)
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <SafeAreaView style={styles.main}>
+      <LocationModal isVisFunc={setLocVis} setInfoModalVisible={setInfoModalVisible} isVis={locModalVisible} setLocID={setLocID}/>
+      <InfoModal isVisFunc={setInfoVis} isVis={infoModalVisible}
+        locID={locID}/>
+      <View style={styles.nav}>
+        <Pressable onPress={setLocVis}>
+          <Text style={styles.navTxt}>Location</Text>
+        </Pressable>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+        <Text style={styles.navTxt}>Scan</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+var styles = StyleSheet.create({
+  main: {
+    flex: 2,
+    justifyContent: 'flex-end'
+  },
+  nav: {
+    flexDirection: 'row',
+    height: '8%',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
+    backgroundColor: 'black',
+  },
+  navTxt: {
+    fontSize: 24,
+    color: 'white',
+  },
+  centeredView: {
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22
   },
 });
