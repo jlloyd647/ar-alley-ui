@@ -12,10 +12,10 @@ export default class InfoModal extends Component {
     return (
       <Modal
       animationType='fade'
-      transparent={true}
+      transparent={false}
       visible={this.props.isVis}
       onRequestClose={() => {
-        alert.alerg('Modal has been closed')
+        alert.alert('Modal has been closed')
         //setModalVisible(true)
       }}
       >

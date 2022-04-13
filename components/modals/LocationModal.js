@@ -1,12 +1,17 @@
 import { Text, View, Button, Modal, StyleSheet, FlatList, Pressable} from 'react-native'
 import React, { Component } from 'react'
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export default class LocationModal extends Component {
   render() {
+    
     const onInfoPress = (id) => {
+      console.log(id)
       this.props.setLocID(id)
       this.props.setInfoModalVisible(true)
     }
+
     return (
       <Modal
       animationType='fade'
@@ -19,12 +24,21 @@ export default class LocationModal extends Component {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+
+          <Pressable >
+              <Text style={styles.closeBtn}>
+                <Icon onPress={this.props.isVisFunc} name="close-circle-outline" size={48} color='grey'/>
+              </Text>
+          </Pressable>
+
+
           <FlatList
             data={[
               {key: 0, name: 'CofC Cistern'},
               {key: 1, name: 'Charleston Tech Center'},
               {key: 2, name: 'CofC Lodge'},
-              {key: 3, name: 'Harbor Walk East'},
+              {key: 3, name: 'Harbor Walk East'}
+
             ]}
             renderItem={({item}) => 
             <Pressable onPress={ () => onInfoPress(item.key)}>
@@ -32,7 +46,7 @@ export default class LocationModal extends Component {
             </Pressable>
             }
           />
-          <Button title='Close' onPress={this.props.isVisFunc} />
+
           </View>
         </View>
       </Modal>
@@ -42,25 +56,23 @@ export default class LocationModal extends Component {
 
 var styles = StyleSheet.create({ 
   modalView: {
-    width: '90%',
-    height: '60%',
-    margin: 20,
+    width: '80%',
+    height: '100%',
+    marginTop: 0,
     backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
+    padding: 36,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+    borderWidth:1,
   },
   item: {
     padding: 10,
     fontSize: 18,
     height: 44,
   },
+  closeBtn: {
+    left: 100,
+
+
+
+  }
 })
