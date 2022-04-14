@@ -18,20 +18,16 @@ export default class LocationModal extends Component {
       transparent={true}
       visible={this.props.isVis}
       onRequestClose={() => {
-        alert.alerg('Modal has been closed')
-        //setModalVisible(true)
+        alert.alert('Modal has been closed')
+        console.log('close Loc')
+        setModalVisible(true)
       }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-
-          <Pressable >
-              <Text style={styles.closeBtn}>
-                <Icon onPress={this.props.isVisFunc} name="close-circle-outline" size={48} color='grey'/>
-              </Text>
+          <Pressable onPress={this.props.isVisFunc} style={styles.closeBtn}>
+            <Icon name="close-circle-outline" size={48} color='grey' />
           </Pressable>
-
-
           <FlatList
             data={[
               {key: 0, name: 'CofC Cistern'},
@@ -46,7 +42,6 @@ export default class LocationModal extends Component {
             </Pressable>
             }
           />
-
           </View>
         </View>
       </Modal>
@@ -71,8 +66,5 @@ var styles = StyleSheet.create({
   },
   closeBtn: {
     left: 100,
-
-
-
   }
 })
