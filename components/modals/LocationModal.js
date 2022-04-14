@@ -18,7 +18,7 @@ export default class LocationModal extends Component {
       transparent={true}
       visible={this.props.isVis}
       onRequestClose={() => {
-        alert.alerg('Modal has been closed')
+        alert.alert('Modal has been closed')
         //setModalVisible(true)
       }}
       >
