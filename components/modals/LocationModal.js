@@ -25,10 +25,8 @@ export default class LocationModal extends Component {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
 
-          <Pressable >
-              <Text style={styles.closeBtn}>
-                <Icon onPress={this.props.isVisFunc} name="close-circle-outline" size={48} color='grey'/>
-              </Text>
+          <Pressable onPress={this.props.isVisFunc} style={styles.closeBtn}>
+            <Icon name="close-circle-outline" size={48} color='grey' />
           </Pressable>
 
 
