@@ -11,16 +11,15 @@ export default class InfoModal extends Component {
   render() {
     return (
       <Modal
-      animationType='fade'
+      //animationType='fade'
       transparent={false}
       visible={this.props.isVis}
-      onRequestClose={() => {
-        alert.alert('Modal has been closed')
-        //setModalVisible(true)
-      }}
+      // onRequestClose={() => {
+      //   setModalVisible(true)
+      // a}}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
+          <View style={styles.modalView} >
             <Text>{data[this.props.locID].loc}</Text>
             <Text>{data[this.props.locID].artistName}</Text>
           <Button title='Close' onPress={this.props.isVisFunc} />

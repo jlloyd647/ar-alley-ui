@@ -7,9 +7,12 @@ export default class LocationModal extends Component {
   render() {
     
     const onInfoPress = (id) => {
-      console.log(id)
+      console.log(this.props.isVis)
       this.props.setLocID(id)
-      this.props.setInfoModalVisible(true)
+      this.props.isVisFunc()
+      this.props.Rr()
+      //setTimeout(200)
+      //this.props.setInfoModalVisible
     }
 
     return (
